@@ -1,0 +1,709 @@
+/* ==========================================
+   CSS変数（色・サイズの一括管理）
+   ========================================== */
+:root {
+    --primary: #FF6B35;           /* オレンジ（ボタンやロゴに使う） */
+    --primary-dark: #E85A24;      /* 濃いオレンジ（ホバーしたとき） */
+    --primary-light: #FFB347;     /* 薄いオレンジ（グラデーション用） */
+    --secondary: #2ECC71;         /* 緑（成功メッセージなどに使う） */
+    --dark: #1A1A2E;              /* 濃い紺（見出しや本文） */
+    --gray-dark: #4A4A6A;         /* 濃いグレー（サブテキスト） */
+    --gray: #6C757D;              /* グレー（説明文・日時など） */
+    --gray-light: #E9ECEF;        /* 薄いグレー（ボタン背景など） */
+    --bg: #FFFBF7;                /* ページ全体の背景（温かみのある白） */
+    --bg-card: #FFFFFF;           /* カードの背景（真っ白） */
+    --border: #F0E6D6;            /* 線の色（薄いベージュ） */
+    --radius: 16px;               /* 角丸（大）カードなどに使う */
+    --radius-sm: 8px;             /* 角丸（小）入力欄などに使う */
+    --font-ja: 'Noto Sans JP', sans-serif;   /* 日本語フォント */
+    --font-en: 'Playfair Display', serif;    /* 英字フォント（ロゴ用） */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* なめらかなアニメーション */
+}
+
+
+/* ==========================================
+   リセット・基本設定
+   ========================================== */
+
+/* 全要素の余白をゼロにする（ブラウザごとの違いをなくす） */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* スクロールをなめらかにする */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ページ全体のフォント・背景・文字色 */
+body {
+    font-family: var(--font-ja);
+    background: var(--bg);
+    color: var(--dark);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+/* リンクの下線を消す・文字色は親要素から引き継ぐ */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 画像がはみ出さないようにする */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* ==========================================
+   レイアウト
+   ========================================== */
+
+/* コンテンツを中央に収める箱。現実に例えると「舞台の演者エリア」 */
+.container {
+    max-width: 1200px; /* 最大幅 */
+    margin: 0 auto;    /* 左右均等に余白をとって中央に */
+    padding: 0 20px;   /* 左右に少し余白（画面端にくっつかない） */
+}
+
+
+/* ==========================================
+   ヘッダー
+   ========================================== */
+
+/* ヘッダー全体の外側の箱 */
+.site-header {
+    position: sticky;                        /* スクロールしても上に固定 */
+    top: 0;                                  /* 画面の上端にぴったり張り付く */
+    z-index: 100;                            /* 他の要素より必ず手前に表示 */
+    background: rgba(255, 251, 247, 0.92);   /* 温かみのある白・少し透ける */
+    backdrop-filter: blur(16px);             /* 後ろをぼかすすりガラス効果 */
+    -webkit-backdrop-filter: blur(16px);     /* Safari でも動くようにする */
+    border-bottom: 1px solid var(--border);  /* 下に薄いベージュの線 */
+    box-shadow: 0 2px 20px rgba(255, 107, 53, 0.06); /* うっすらオレンジの影 */
+}
+
+/* ロゴ・ナビ・ボタンを横に並べる箱 */
+.header-inner {
+    display: flex;           /* 横並びにする */
+    align-items: center;     /* 縦方向で中央揃え */
+    height: 72px;            /* ヘッダーの高さ */
+    gap: 32px;               /* 子要素どうしの間隔 */
+}
+
+
+/* ==========================================
+   ロゴ
+   ========================================== */
+
+/* ロゴ全体（アイコン＋テキストを横並びに） */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;          /* アイコンとテキストの間隔 */
+    white-space: nowrap; /* 折り返さない */
+}
+
+/* ロゴのアイコン（🍳） */
+.logo-icon {
+    font-size: 1.8rem;  /* 絵文字を大きく */
+}
+
+/* ロゴのテキスト（CookBoard） */
+.logo-text {
+    font-family: var(--font-en);  /* オシャレな英字フォント */
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    /* 文字にオレンジのグラデーションをかける技 */
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;        /* 文字の形に切り抜く */
+    background-clip: text; /* ← これを追加 */
+    -webkit-text-fill-color: transparent; /* 元の文字色を透明にする */
+}
+
+
+/* ==========================================
+   ナビゲーション
+   ========================================== */
+
+/* ナビ全体（リンクを横並びに） */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 4px;   /* リンクどうしの間隔 */
+    flex: 1;    /* 残りのスペースを全部使う */
+}
+
+/* 各ナビリンク */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;                    /* アイコンとテキストの間隔 */
+    padding: 8px 16px;           /* 内側の余白（クリックしやすい大きさに） */
+    border-radius: 50px;         /* 角を完全に丸くしてピル型に */
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--gray-dark);     /* 濃いグレーの文字 */
+    transition: var(--transition); /* ホバー時のなめらかなアニメーション */
+}
+
+/* ホバーしたとき・現在のページのとき */
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(255, 107, 53, 0.08); /* 薄いオレンジの背景 */
+    color: var(--primary);                /* オレンジの文字 */
+}
+
+/* アイコンのサイズ */
+.nav-icon {
+    font-size: 1rem;
+}
+
+/* 「投稿する」ボタン（オレンジで目立つ） */
+/* .nav-menu の中の .nav-post という書き方で優先度を上げる */
+.nav-menu .nav-post {
+    background: var(--primary); /* オレンジ背景 */
+    color: white;               /* 白文字 */
+}
+
+.nav-menu .nav-post:hover {
+    background: var(--primary-dark);  /* 濃いオレンジ */
+    transform: translateY(-1px);      /* 少し浮き上がる */
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3); /* オレンジの影 */
+}
+
+
+/* ==========================================
+   フッター
+   ========================================== */
+
+.site-footer {
+    background: var(--dark);             /* 濃い紺の背景 */
+    color: rgba(255, 255, 255, 0.8);     /* 少し透明な白文字 */
+    margin-top: 80px;                    /* コンテンツとの間隔 */
+}
+
+/* フッターの下部（コピーライト） */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* 薄い上線 */
+    padding: 24px 0;       /* 上下の余白 */
+    text-align: center;    /* 中央揃え */
+    font-size: 0.85rem;
+    opacity: 0.5;          /* 少し薄く表示 */
+}
+
+/* ==========================================
+   ページバナー（各ページ上部のオレンジ帯）
+   ========================================== */
+
+.page-banner {
+    /* オレンジのグラデーション背景 */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    padding: 60px 0;       /* 上下の余白 */
+    color: white;          /* 文字を白に */
+    text-align: center;    /* 中央揃え */
+    margin-bottom: 60px;   /* 下のコンテンツとの間隔 */
+}   
+
+.page-banner-title {
+    font-family: var(--font-en); /* オシャレな英字フォント */
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.page-banner-desc {
+    font-size: 1rem;
+    opacity: 0.9; /* 少し透明にして落ち着いた白に */
+}
+
+
+/* ==========================================
+   レシピカード一覧
+   ========================================== */
+
+.recipe-grid {
+    /* カードを横に並べるグリッドレイアウト */
+    /* auto-fill = 横幅に合わせて自動で列数を変える */
+    /* minmax(300px, 1fr) = 最小300px・最大は均等に広げる */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 28px;          /* カードどうしの間隔 */
+    margin-bottom: 80px;
+}
+
+.recipe-card {
+    background: var(--bg-card);  /* 白い背景 */
+    border-radius: var(--radius); /* 角丸 */
+    border: 1px solid var(--border); /* 薄いベージュの枠線 */
+    overflow: hidden;    /* 角丸からはみ出た部分を隠す */
+    transition: var(--transition); /* ホバー時のなめらかな動き */
+}
+
+.recipe-card:hover {
+    /* マウスを乗せたとき浮き上がる */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(255, 107, 53, 0.15);
+}
+
+.recipe-card-color {
+    /* カード上部のオレンジのカラーバー */
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+.recipe-card-body {
+    padding: 24px; /* カード内側の余白 */
+}
+
+.recipe-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.recipe-card-desc {
+    font-size: 0.9rem;
+    color: var(--gray);   /* グレーの文字 */
+    margin-bottom: 20px;
+    line-height: 1.7;
+
+    /* 2行で切り捨てて「...」にする */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* ← 標準版を追加 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recipe-card-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--primary); /* オレンジの文字 */
+    transition: var(--transition);
+}
+
+.recipe-card-link:hover {
+    color: var(--primary-dark); /* ホバーで濃いオレンジに */
+}
+
+
+/* ==========================================
+   レシピ詳細ページ
+   ========================================== */
+
+/* 戻るリンク */
+.back-link{
+    display: inline-block; /* 横幅をテキストに合わせる */
+    margin-bottom: 24px;      /* 下の余白 */
+    color: var(--primary);    /* オレンジ文字 */
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: var(--transition);
+}
+.back-link:hover{
+    color: var(--primary-dark); /* ホバーで濃いオレンジ */
+}
+.detail-card{
+    background: var(--bg-card); /* 白い背景 */
+    border-radius: var(--radius); /* 角丸 */
+    border: 1px solid var(--border);  /* 薄いベージュの枠線 */
+    padding: 40px;                    /* 内側の余白 */
+    margin-bottom: 80px;
+}
+/* 材料・作り方のセクション */
+.detail-section {
+    margin-bottom: 32px;
+}
+
+/* 材料・作り方の見出し */
+.detail-heading{
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border); /* 下線 */
+}
+/* 材料・作り方の本文 */
+.detail-text {
+    font-size: 0.98rem;
+    color: var(--gray-dark);
+    line-height: 1.9;    /* 行間を広めにして読みやすく */
+    white-space: pre-wrap; /* 改行をそのまま表示する */
+}
+/* 区切り線 */
+.detail-divider{
+    border: none;
+    border-top: 1px solid var(--border); /* 薄いベージュの線 */
+    margin: 32px 0; /* 上下の余白 */
+}
+/* ボタンエリア（編集・削除を横並びに） */
+.button-area{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* ボタン共通 */
+.btn {
+    display: inline-flex;     /* 中身（アイコン＋テキスト）を横並びに */
+    align-items: center;      /* 縦方向で中央揃え */
+    gap: 8px;                 /* アイコンとテキストの間隔 */
+    padding: 10px 24px;       /* 内側の余白 */
+    border-radius: 50px;      /* ピル型に丸くする */
+    font-family: var(--font-ja); /* 日本語フォント */
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;          /* マウスを乗せたら指マークに */
+    transition: var(--transition); /* なめらかなアニメーション */
+    border: 2px solid transparent; /* 枠線（透明）削除ボタンと形を揃えるため */
+    text-decoration: none;    /* リンクの下線を消す */
+}
+
+/* オレンジのボタン（編集する） */
+.btn-primary {
+    background: var(--primary); /* オレンジ背景 */
+    color: white;               /* 白文字 */
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark); /* ホバーで濃いオレンジ */
+    transform: translateY(-2px);     /* 少し浮き上がる */
+}
+
+/* 削除ボタン */
+.btn-delete{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-family: var(--font-ja);
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid #E24B4A; /* 赤い枠線 */
+    background: transparent;   /* 背景は透明 */
+    color: #E24B4A;            /* 赤い文字 */
+}
+.btn-delete:hover {
+    background: #E24B4A; /* ホバーで赤い背景に */
+    color: white;
+}
+
+/* ==========================================
+   フォーム
+   ========================================== */
+
+/* フォーム全体を包む白いカード */
+.form-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 40px;
+    margin-bottom: 80px;
+}
+
+/* 各入力グループ（ラベル＋入力欄） */
+.form-group {
+    margin-bottom: 28px; /* グループどうしの間隔 */
+}
+
+/* ラベル */
+.form-label {
+    display: block;       /* ラベルを入力欄の上に表示 */
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 8px;   /* ラベルと入力欄の間隔 */
+}
+
+/* 必須マーク（*） */
+.form-required {
+    color: var(--primary); /* オレンジ色 */
+    margin-left: 4px;
+}
+
+/* 入力欄・テキストエリア共通 */
+.form-control {
+    width: 100%;           /* 横幅いっぱいに広げる */
+    padding: 12px 16px;    /* 内側の余白 */
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ja);
+    font-size: 0.95rem;
+    color: var(--dark);
+    background: var(--bg);
+    transition: var(--transition);
+    resize: vertical;      /* テキストエリアは縦方向だけリサイズ可能 */
+}
+
+/* 入力欄をクリックしたとき（フォーカス時） */
+.form-control:focus {
+    outline: none;                        /* デフォルトの青い枠を消す */
+    border-color: var(--primary);         /* オレンジの枠線に変わる */
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12); /* うっすらオレンジの光 */
+}
+
+/* ヒントテキスト（入力欄の下の説明文） */
+.form-hint {
+    font-size: 0.82rem;
+    color: var(--gray);
+    margin-top: 6px;
+}
+
+/* 送信ボタンエリア */
+.form-submit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+/* キャンセルボタン */
+.btn-cancel {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-family: var(--font-ja);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--gray);
+    border: 1.5px solid var(--border);
+    transition: var(--transition);
+}
+
+.btn-cancel:hover {
+    background: var(--border);
+    color: var(--dark);
+}
+
+
+/* ==========================================
+   掲示板一覧
+   ========================================== */
+
+/* スレッド一覧の外側 */
+.thread-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;              /* スレッド間の間隔 */
+    margin-bottom: 80px;
+}
+/* 各スレッドのアイテム */
+.thread-item {
+    display: flex;           /* 横並び（アイコン・テキスト・返信数） */
+    align-items: center;     /* 縦方向で中央揃え */
+    gap: 16px;               /* 要素間の間隔 */
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    color: var(--dark);      /* 文字色（リンクの色を上書き） */
+    transition: var(--transition);
+}
+.thread-item:hover {
+    transform: translateY(-2px);  /* ホバーで少し浮く */
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.1);
+    border-color: var(--primary); /* 枠線がオレンジに */
+}
+/* 左のアイコン（丸いオレンジ背景） */
+.thread-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;                    /* 丸くする */
+    background: rgba(255, 107, 53, 0.12); /* 薄いオレンジ背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;              /* アイコンを中央に */
+    font-size: 1.2rem;
+    flex-shrink: 0;                        /* 縮まないようにする */
+}
+/* スレッドのタイトルと本文エリア */
+.thread-info {
+    flex: 1; /* 残りのスペースを全部使う */
+}
+
+/* スレッドのタイトル */
+.thread-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+/* スレッドの本文（2行で切り捨て） */
+.thread-meta {
+    font-size: 0.85rem;
+    color: var(--gray);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+
+/* ==========================================
+   ヒーローセクション（トップページ）
+   ========================================== */
+
+.hero {
+    background: linear-gradient(135deg, #fff8f3 0%, #ffeedd 100%);
+    padding: 100px 0;
+    min-height: 80vh;           /* 画面の80%の高さを確保 */
+    display: flex;
+    align-items: center;        /* 縦方向で中央揃え */
+}
+
+.hero .container {
+    display: flex;              /* 左右に並べる */
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* 左側のテキストエリア */
+.hero-content {
+    flex: 1;                    /* 残りのスペースを使う */
+    max-width: 560px;
+}
+
+/* 「みんなの料理コミュニティ」タグ */
+.hero-tag {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.2); /* 薄いオレンジ背景 */
+    color: #FF9966;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+.hero-title {
+    font-family: var(--font-en);
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.hero-desc {
+    color: var(--gray-dark);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 36px;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.15);
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--dark);
+    border: 2px solid var(--border);
+}
+
+.btn-outline:hover {
+    background: var(--border);
+    border-color: var(--gray);
+}
+
+/* 右側の絵文字グリッド */
+.hero-visual {
+    flex-shrink: 0;             /* 縮まないようにする */
+}
+
+.hero-emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3列グリッド */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 各絵文字 */
+.hero-emoji {
+    font-size: 2.8rem;
+    text-align: center;
+
+    /* ふわふわ浮くアニメーション */
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 偶数番目は少し遅らせてバラバラに動かす */
+.hero-emoji:nth-child(2n) { animation-delay: 0.5s; }
+.hero-emoji:nth-child(3n) { animation-delay: 1s; }
+
+/* ふわふわアニメーションの定義 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }      /* 元の位置 */
+    50%       { transform: translateY(-10px); }  /* 上に10px浮く */
+}
+
+
+
+/* ==========================================
+   認証ページ（ログイン・新規登録）
+   ========================================== */
+
+/* フォームを中央に配置する */
+.auth-container {
+    display: flex;
+    justify-content: center;  /* 横方向で中央に */
+    padding: 40px 20px 80px;
+}
+
+/* フォームカードの最大幅を制限 */
+.auth-container .form-card {
+    width: 100%;
+    max-width: 480px; /* これ以上広がらない */
+}
+
+/* エラーメッセージのスタイル */
+.auth-errors {
+    background: #FFF0F0;       /* 薄い赤背景 */
+    border: 1px solid #FFCCCC; /* 赤い枠線 */
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 0.88rem;
+    color: #CC0000;            /* 赤い文字 */
+}
+
+/* ログイン・登録の切り替えリンク */
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.88rem;
+    color: var(--gray);
+}
+
+.auth-switch a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+/* ボタンを横幅いっぱいに */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
