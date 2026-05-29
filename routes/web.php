@@ -9,15 +9,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-// 誰でも見れる
-Route::resource('recipes', RecipeController::class)->only(['index', 'show']);
-Route::resource('threads', ThreadController::class)->only(['index', 'show']);
-
 // ログインしないと入れない
 Route::middleware('auth')->group(function () {
     Route::resource('recipes', RecipeController::class)->except(['index', 'show']);
     Route::resource('threads', ThreadController::class)->except(['index', 'show']);
 });
+
+// 誰でも見れる（showより先にcreateが来るように、middlewareの後に書く）
+Route::resource('recipes', RecipeController::class)->only(['index', 'show']);
+Route::resource('threads', ThreadController::class)->only(['index', 'show']);
 
 // 認証
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');

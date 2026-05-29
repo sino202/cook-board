@@ -31,12 +31,23 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        //画像の保存処理
+        //$imageNameの最初はnull(画像なし)
+        $imageName = null;
+
+        //画像が送られてきたら保存する
+        if($request->hasFile('image')){
+            // ファイルを public/imafes/recipes/ に保存する
+            // store()は自動でファイル名をつけてくれる
+            $imageName = $request->file('image')->store('images/recipes', 'public');    
+        }
         Recipe::create([
             'title' => $request ->title,
             'description' => $request ->description,
             'ingredients' => $request ->ingredients,
             'steps' => $request ->steps,
             'user_id' => auth()->id(),
+            'image' => $imageName, //画像ファイル名を保存する
 
         ]);
         return redirect('/recipes');
@@ -55,6 +66,10 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
+        //自分の投稿じゃなければ一覧に追い返す
+        if($recipe->user_id !== Auth::id()){
+            return redirect('/recipes');
+        }
         return view('recipes.edit', compact('recipe'));
     }
 
@@ -63,6 +78,10 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
+        //自分の投稿じゃなければ一覧に追い返す
+        if($recipe->user_id !== Auth::id()){
+            return redirect('/recipes');
+        }
         $recipe->update([
             'title'       => $request->title,
             'description' => $request->description,
@@ -78,6 +97,10 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
+        //自分の投稿じゃなければ一覧に追い返す
+        if($recipe->user_id !== Auth::id()){
+            return redirect('/recipes');
+        }
         $recipe->delete();
         return redirect('/recipes');
     }

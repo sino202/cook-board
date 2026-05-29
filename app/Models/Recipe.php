@@ -12,6 +12,7 @@ class Recipe extends Model
         'ingredients',
         'steps',
         'user_id',
+        'image', //画像ファイル名を保存する
     ];
 
     // Recipeは1人のUserに属している
