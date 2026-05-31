@@ -3,11 +3,10 @@
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 // ログインしないと入れない(投稿・編集・削除)
 Route::middleware('auth')->group(function () {

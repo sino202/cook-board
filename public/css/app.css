@@ -758,3 +758,111 @@ img {
     font-weight: bold;
     flex-shrink: 0;
 }
+
+/* ==========================================
+   返信カード
+   ========================================== */
+
+/* 返信カード1枚分の箱 */
+.reply-card{
+    border-left: 4px solid var(--primary);
+    background: var(--bg); 
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+}
+
+/* 返信カードの上部（アイコン・名前・日付を横並びに） */
+.reply-header {
+    display: flex;         /* 横並びにする */
+    align-items: center;   /* 縦方向で中央揃え */
+    gap: 10px;             /* 要素どうしの間隔 */
+    margin-bottom: 12px;   /* 下のテキストとの間隔 */
+}
+.user-icon{
+    width: 36px;  /* 丸の横幅 */
+    height: 36px;  /* 丸の縦幅 */  
+    border-radius: 50%; 
+    border: 2px solid var(--primary);  /* オレンジの枠線 */
+    background: var(--primary);
+    color: #fff;
+    display: flex; /* 中の文字を中央に */
+    align-items: center; /* 縦方向で中央揃え */
+    justify-content: center; /* 横方向で中央揃え */
+    font-size: 0.85rem;
+    font-weight: 700;         
+    flex-shrink: 0; /* 縮まないようにする */
+}
+
+/* 返信者の名前 */
+.reply-user {
+    font-weight: 700;        /* 太字 */
+    font-size: 0.95rem;      /* 文字サイズ */
+    color: var(--dark);      /* 濃い紺色 */
+}
+
+/* 返信の日時 */
+.reply-date {
+    font-size: 0.82rem;      /* 小さめの文字 */
+    color: var(--gray);      /* グレーで目立たせすぎない */
+    margin-left: auto;       /* 左側を自動余白にして右端に寄せる */
+}
+/* 返信の本文 */
+.reply-content {
+    font-size: 0.95rem;      /* 文字サイズ */
+    color: var(--gray-dark); /* 濃いグレー（読みやすい色） */
+    line-height: 1.8;        /* 行間を広めにして読みやすく */
+}
+
+
+
+
+/* ==========================================
+   トップページ セクション
+   ========================================== */
+
+/* 各セクションの上下の余白 */
+.home-section {
+    padding: 30px 0;
+}
+
+/* セクションのタイトル */
+.home-section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+    display: flex;         /* 絵文字とテキストを横並びに */
+    align-items: center;   /* 縦方向で中央揃え */
+    gap: 8px;              /* 絵文字とテキストの間隔 */
+}
+
+/* セクションのタイトル */
+.home-section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* 「すべて見る →」リンク */
+.home-section-link {
+    font-size: 0.9rem;
+    color: var(--primary);    /* オレンジ文字 */
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.home-section-link:hover {
+    color: var(--primary-dark); /* ホバーで濃いオレンジ */
+}
+
+.home-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    width: 100%;          /* 横幅を全部使う */
+}
+.home-section {
+    padding: 60px 0;
+    border-top: 1px solid var(--border); /* セクション間の区切り線 */
+}

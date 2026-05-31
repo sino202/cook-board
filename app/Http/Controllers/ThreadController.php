@@ -42,7 +42,8 @@ class ThreadController extends Controller
     //返信を保存する。引数が$request = フォームから送られてきたデータ。$thread = URLの {thread} の部分。どのスレッドか自動で取得してくれる！
     public function storeReply(Request $request , Thread $thread)
     {
-        //このスレッドの返信として保存してっていう命令
+        //このスレッドの返信として保存してっていう命令。php artisan migrate を実行したときに作られた replies という引き出しに、返信のデータが保存される
+        //$thread->replies()->create() と書くと自動でthread_idを入れてくれる
         $thread->replies()->create([
             //フォームから送られてきた返信の文章を content カラムに保存する。
             'content' => $request->content,
