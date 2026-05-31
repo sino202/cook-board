@@ -567,7 +567,14 @@ img {
 }
 
 .hero .container {
-    display: flex;              /* 左右に並べる */
+    display: flex;
+    flex-direction: column;  /* 縦並びにする */
+    gap: 40px;               /* 上段と下段の間隔 */
+}
+
+/* 上段（テキスト＋絵文字）を横並びに */
+.hero-top {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 60px;
@@ -865,4 +872,190 @@ img {
 .home-section {
     padding: 60px 0;
     border-top: 1px solid var(--border); /* セクション間の区切り線 */
+}
+
+
+/* ==========================================
+   今日の食材豆知識カード
+   ========================================== */
+
+/* カード全体 */
+.food-tip-card {
+    display: flex;              /* 絵文字と説明を横並びに */
+    align-items: center;        /* 縦方向で中央揃え */
+    gap: 24px;                  /* 絵文字と説明の間隔 */
+    background: rgba(255, 255, 255, 0.7); /* 半透明の白 */
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 32px;           /* ボタンとの間隔 */
+    max-width: 100%;           /* 左側のテキストエリアに合わせる */
+    backdrop-filter: blur(8px); /* すりガラス効果 */
+}
+
+/* 絵文字の箱 */
+.food-tip-emoji {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background: #FFF0E8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+/* 右側のテキストエリア */
+.food-tip-body {
+    flex: 1;
+}
+
+/* 日付 */
+.food-tip-date {
+    font-size: 0.82rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* 食材名 */
+.food-tip-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+/* 説明文 */
+.food-tip-desc {
+    font-size: 0.85rem;
+    color: var(--gray-dark);
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+/* タグの並び */
+.food-tip-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* 各タグ */
+.food-tip-tag {
+    background: rgba(255, 107, 53, 0.12);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+/* 明日のプレビュー */
+.food-tip-tomorrow {
+    font-size: 0.82rem;
+    color: var(--gray);
+}
+
+
+
+/* ==========================================
+   レスポンシブ対応（スマホ・タブレット）
+   ========================================== */
+
+/* 768px以下（タブレット・スマホ）のとき */
+@media (max-width: 768px) {
+
+    /* ロゴを小さくする */
+    .logo-text {
+        font-size: 1.0rem;
+    }
+
+    .logo-icon {
+        font-size: 1.0rem;
+    }
+
+    /* ヒーローの上段を縦並びに */
+    .hero-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* タイトルを小さくする */
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    /* ヒーローのテキストエリアの最大幅を解除 */
+    .hero-content {
+        max-width: 100%;
+    }
+
+    /* 絵文字グリッドを隠す（スマホでは非表示） */
+    .hero-visual {
+        display: none;
+    }
+
+    /* レシピカードを1列にする */
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* セクションタイトルと「すべて見る」を縦並びに */
+    .home-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* ヒーローの余白を小さくする */
+    .hero {
+        padding: 40px 0;
+    }
+    
+    /* ボタンを縦並びにする */
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* ナビメニューを小さくする */
+    .nav-link {
+        padding: 4px 4px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+            
+    /* 説明文が切れないようにする */
+    .hero-desc {
+        font-size: 0.9rem;
+        word-break: keep-all;
+    }
+
+    /* ナビを小さくして折り返さないようにする */
+    .nav-menu {
+        gap: 2px;
+    }
+
+    /* アイコンを隠して文字だけ表示 */
+    .nav-icon {
+        display: none;
+    }
+
+    /* ナビの文字を小さくする */
+    .nav-link {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+        white-space: nowrap;  /* 折り返さないようにする */
+    }
+
+    /* 食材カードを縦並びに */
+    .food-tip-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .food-tip-tags {
+        justify-content: center;
+    }
 }
