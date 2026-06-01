@@ -2,55 +2,48 @@
 
 @section('content')
     {{-- ヒーローセクション --}}
-        <section class="hero">
-            <div class="container">
+    <section class="hero">
+        <div class="container">
 
-                {{-- 上段：テキスト＋絵文字グリッド --}}
-                <div class="hero-top">
+            {{-- 上段：テキスト＋食材カード --}}
+            <div class="hero-top">
 
-                    {{-- 左側：テキスト --}}
-                    <div class="hero-content">
-                        <div class="hero-tag">🍳 みんなの料理コミュニティ</div>
-                        <h1 class="hero-title">料理を<span>楽しく</span><br>シェアしよう</h1>
-                        <p class="hero-desc">レシピを投稿して、みんなと料理の喜びを共有しよう。<br>掲示板でコミュニケーションを楽しもう！</p>
-                        <div class="hero-actions">
-                            <a href="/recipes" class="btn btn-primary btn-lg">🍽️ レシピを見る</a>
-                            <a href="/threads" class="btn btn-outline btn-lg">💬 掲示板へ</a>
-                        </div>
-                    </div>
-
-                    {{-- 右側：絵文字グリッド --}}
-                    <div class="hero-visual">
-                        <div class="hero-emoji-grid">
-                            <div class="hero-emoji">🍱</div>
-                            <div class="hero-emoji">🍝</div>
-                            <div class="hero-emoji">🍰</div>
-                            <div class="hero-emoji">🥗</div>
-                            <div class="hero-emoji">🍳</div>
-                            <div class="hero-emoji">🥟</div>
-                            <div class="hero-emoji">🍜</div>
-                            <div class="hero-emoji">🍣</div>
-                            <div class="hero-emoji">🥘</div>
-                        </div>
-                    </div>
-
-                </div>
-
-                {{-- 下段：今日の食材カード --}}
-                <div class="food-tip-card" id="foodTipCard">
-                    <div class="food-tip-emoji" id="foodTipEmoji"></div>
-                    <div class="food-tip-body">
-                        <p class="food-tip-date" id="foodTipDate"></p>
-                        <h3 class="food-tip-name" id="foodTipName"></h3>
-                        <p class="food-tip-desc" id="foodTipDesc"></p>
-                        <div class="food-tip-tags" id="foodTipTags"></div>
-                        <p class="food-tip-tomorrow" id="foodTipTomorrow"></p>
+                {{-- 左側：テキスト --}}
+                <div class="hero-content">
+                    <div class="hero-tag">🍳 みんなの料理コミュニティ</div>
+                    <h1 class="hero-title">料理を<span>楽しく</span><br>シェアしよう</h1>
+                    <p class="hero-desc">レシピを投稿して、みんなと料理の喜びを共有しよう。<br>掲示板でコミュニケーションを楽しもう！</p>
+                    <div class="hero-actions">
+                        <a href="/recipes" class="btn btn-primary btn-lg">🍽️ レシピを見る</a>
+                        <a href="/threads" class="btn btn-outline btn-lg">💬 掲示板へ</a>
                     </div>
                 </div>
 
+                {{-- 右側：今日の食材カード --}}
+                <div class="hero-visual">
+                    <div class="food-tip-card" id="foodTipCard">
+                        <div class="food-tip-emoji" id="foodTipEmoji"></div>
+                        <div class="food-tip-body">
+                            <p class="food-tip-date" id="foodTipDate"></p>
+                            <h3 class="food-tip-name" id="foodTipName"></h3>
+                            <p class="food-tip-desc" id="foodTipDesc"></p>
+                            <div class="food-tip-tags" id="foodTipTags"></div>
+                            <p class="food-tip-tomorrow" id="foodTipTomorrow"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>{{-- hero-top ここまで --}}
+
+            {{-- 下段：紹介動画 --}}
+            <div class="hero-video-box">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="{{ asset('videos/hero.mp4') }}" type="video/mp4">
+                </video>
             </div>
-        </section>
 
+        </div>{{-- container ここまで --}}
+    </section>
 
     {{-- 新着レシピセクション --}}
     <section class="home-section">
