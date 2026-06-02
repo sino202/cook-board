@@ -37,7 +37,7 @@ class RecipeController extends Controller
         'description' => 'required|max:500',
         'ingredients' => 'required',
         'steps'       => 'required',
-        'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:51200',
         ]);
 
         //画像の保存処理
