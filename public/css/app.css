@@ -984,7 +984,25 @@ img {
     color: var(--gray);
 }
 
+/* ハンバーガーボタン本体（普段は非表示） */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
 
+/* ハンバーガーの3本線 */
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+}
 
 /* ==========================================
    レスポンシブ対応（スマホ・タブレット）
@@ -1085,5 +1103,32 @@ img {
 
     .food-tip-tags {
         justify-content: center;
+    }
+
+    /* スマホの時だけハンバーガーボタンを表示・メニューを隠す */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        right: 0;
+        background: white;
+        width: 200px;
+        padding: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-radius: 0 0 12px 12px;
+        z-index: 100;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .header-inner {
+        justify-content: space-between;
     }
 }

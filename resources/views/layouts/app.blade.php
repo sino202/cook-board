@@ -29,6 +29,13 @@
                 <span class="logo-text">CookBoard</span>
             </a>
 
+            <!-- ハンバーガーボタン（スマホのときだけ表示） -->
+            <button class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <!-- ナビゲーションメニュー -->
             <nav class="nav-menu">
                 <!-- ホームリンク -->
@@ -78,6 +85,18 @@
             <p>© 2024 CookBoard. みんなの料理コミュニティ 🍳</p>
         </div>
     </footer>
+
+    <!-- ハンバーガーメニューの開閉 -->
+    <script>
+        // ハンバーガーボタンとナビメニューの要素を取得
+        const btn = document.getElementById('hamburger-btn');
+        const nav = document.querySelector('.nav-menu');
+
+        // ボタンがクリックされたときの処理
+        btn.addEventListener('click', function(){
+            nav.classList.toggle('open');
+        });
+    </script>
 
 </body>
 </html>
