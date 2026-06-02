@@ -10,12 +10,12 @@
 
                 {{-- 左側：テキスト --}}
                 <div class="hero-content">
-                    <div class="hero-tag">🍳 みんなの料理コミュニティ</div>
+                    <div class="hero-tag">料理初めての方に向けたコミュニティーサイト</div>
                     <h1 class="hero-title">料理を<span>楽しく</span><br>シェアしよう</h1>
                     <p class="hero-desc">レシピを投稿して、みんなと料理の喜びを共有しよう。<br>掲示板でコミュニケーションを楽しもう！</p>
                     <div class="hero-actions">
-                        <a href="/recipes" class="btn btn-primary btn-lg">🍽️ レシピを見る</a>
-                        <a href="/threads" class="btn btn-outline btn-lg">💬 掲示板へ</a>
+                        <a href="/recipes" class="btn btn-primary btn-lg">レシピを見る</a>
+                        <a href="/threads" class="btn btn-outline btn-lg">掲示板へ</a>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@
         <div class="container">
             {{-- セクションのタイトル --}}
             <div class="home-section-header">
-                <h2 class="home-section-title">🍽️ 新着レシピ</h2>
+                <h2 class="home-section-title"> 新着レシピ</h2>
                 <a href="/recipes" class="home-section-link">すべて見る →</a>
             </div>
 
@@ -82,7 +82,7 @@
 
             {{-- セクションのタイトル --}}
             <div class="home-section-header">
-                <h2 class="home-section-title">💬 新着スレッド</h2>
+                <h2 class="home-section-title">新着スレッド</h2>
                 <a href="/threads" class="home-section-link">すべて見る →</a>
             </div>
 
@@ -138,7 +138,7 @@
 
         // HTMLに書き込む
         document.getElementById('foodTipEmoji').textContent = food.emoji;
-        document.getElementById('foodTipDate').textContent = `📅 今日の食材 - ${month}月${day}日`;
+        document.getElementById('foodTipDate').textContent = `今日の気になる食材 - ${month}月${day}日`;
         document.getElementById('foodTipName').textContent = food.name;
         document.getElementById('foodTipDesc').textContent = food.desc;
         document.getElementById('foodTipTomorrow').textContent = `明日は → ${tomorrow.emoji} ${tomorrow.name}`;

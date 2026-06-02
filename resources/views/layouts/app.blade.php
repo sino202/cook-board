@@ -74,8 +74,10 @@
 
     <!-- ======== フッター（全ページ共通） ======== -->
     <footer class="site-footer">
-        <div class="container">
-            <p>© 2026 Meshi Navi. みんなの料理コミュニティ</p>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Meshi Navi. みんなの料理コミュニティ 🍳</p>
+            </div>
         </div>
     </footer>
 

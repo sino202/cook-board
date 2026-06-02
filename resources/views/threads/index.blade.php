@@ -5,7 +5,7 @@
     {{-- ページ上部のバナー --}}
     <div class="page-banner">
         <div class="container">
-            <h1 class="page-banner-title">💬 掲示板</h1>
+            <h1 class="page-banner-title">掲示板</h1>
             <p class="page-banner-desc">みんなで料理についてトークしよう</p>
         </div>
     </div>
