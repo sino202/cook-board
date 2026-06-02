@@ -15,6 +15,16 @@
 
             {{-- enctype="multipart/form-data"は画像を送るために必要！ --}}
             <form method="POST" action="/recipes" enctype="multipart/form-data">
+                {{-- エラーメッセージ --}}
+@if ($errors->any())
+    <div style="background:#fee;padding:12px;border-radius:8px;margin-bottom:16px;color:#c00;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                 @csrf
 
                 {{-- 画像 --}}
