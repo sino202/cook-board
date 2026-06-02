@@ -6,7 +6,7 @@
     <div class="page-banner">
         <div class="container">
             <h1 class="page-banner-title">{{ $thread->title }}</h1>
-            <p class="page-banner-desc">💬 掲示板</p>
+            <p class="page-banner-desc"> 掲示板</p>
         </div>
     </div>
 
@@ -24,13 +24,14 @@
 
         {{-- 返信一覧 --}}
         <div class="detail-card">
-            <h2 class="section-title">💬 返信一覧</h2>
+            <h2 class="section-title">返信一覧</h2>
             {{-- このスレッドの返信を1つずつ取り出してループする。@forelse = 返信が0件のときは @empty の中を表示する！ --}}
             @forelse ($thread->replies as $reply)
-                <div class="reply-card">
+                <div class="reply-card reply-border-{{ $reply->user->id % 7 }}">
                     <div class="reply-header">
-                        {{-- $reply->user->name = この返信を書いたユーザーの名前。mb_substr(⚪︎⚪︎, 0, 1) = その名前の1文字目だけを取り出す。--}}
-                        <span class="user-icon">{{ mb_substr($reply->user->name, 0, 1) }}</span>
+                            <span class="recipe-author-icon user-color-{{ $reply->user->id % 7 }}">
+                            {{ mb_substr($reply->user->name, 0, 1) }}
+                        </span>
                         <span class="reply-user">{{ $reply->user->name }}</span>
                         {{-- created_at = この返信が投稿された日時。->format('Y/m/d H:i') = 日時の表示形式を指定する。例えば「2026/05/31 00:30」のように表示される --}}
                         <span class="reply-date">{{ $reply->created_at->format('Y/m/d H:i') }}</span>

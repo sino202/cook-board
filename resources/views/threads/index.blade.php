@@ -15,7 +15,6 @@
 
             @foreach($threads as $thread)
             <a href="{{ route('threads.show', $thread->id) }}" class="thread-item">
-
                 {{-- 左のアイコン --}}
                 <div class="thread-icon">💬</div>
 
@@ -23,12 +22,14 @@
                 <div class="thread-info">
                     <div class="thread-title">{{ $thread->title }}</div>
                     <div class="thread-meta">{{ $thread->body }}</div>
-                    {{-- 投稿者名を表示 --}}
-                    <div class="thread-meta">
-                        👤 {{ $thread->user->name ?? '不明' }}
+                    {{-- 投稿者アイコン＋名前 --}}
+                    <div class="recipe-card-author">
+                        <div class="recipe-author-icon user-color-{{ ($thread->user->id ?? 0) % 7 }}">
+                        {{ mb_substr($thread->user->name ?? '?', 0, 1) }}
+                        </div>
+                        {{ $thread->user->name ?? '不明' }}
                     </div>
                 </div>
-
             </a>
             @endforeach
 

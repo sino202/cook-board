@@ -20,13 +20,13 @@
 
         {{-- 材料 --}}
         <div class="detail-section">
-            <h2 class="detail-heading">🥕 材料</h2>
+            <h2 class="detail-heading">材料</h2>
             <p class="detail-text">{{ $recipe->ingredients }}</p>
         </div>
 
         {{-- 作り方 --}}
         <div class="detail-section">
-            <h2 class="detail-heading">📝 作り方</h2>
+            <h2 class="detail-heading">作り方</h2>
             <p class="detail-text">{{ $recipe->steps }}</p>
         </div>
 
@@ -35,13 +35,13 @@
         <div class="button-area">
 
             {{--編集ボタン--}}
-            <a href="/recipes/{{ $recipe->id}}/edit" class="btn btn-primary">✏️ 編集する</a>
+            <a href="/recipes/{{ $recipe->id}}/edit" class="btn btn-primary"> 編集する</a>
 
             {{--削除ボタン--}}
             <form method="POST" action="/recipes/{{ $recipe->id}}">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn-delete">🗑️ 削除する</button>
+                <button type="submit" class="btn btn-outline"> 削除する</button>
             </form>
         </div>
     </div>

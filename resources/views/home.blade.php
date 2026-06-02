@@ -58,10 +58,14 @@
             <div class="recipe-grid">
                 @forelse ($recipes as $recipe)
                     <a href="{{ route('recipes.show', $recipe) }}" class="recipe-card">
-                        <div class="recipe-card-color"></div>
+                        @if($recipe->image)
+                            <img src="{{ asset('storage/' . $recipe->image) }}" alt="{{ $recipe->title }}" class="recipe-card-img-thumb">
+                        @else
+                            <div class="recipe-card-color card-border-{{ $recipe->user->id % 7 }}"></div>
+                        @endif
                         <div class="recipe-card-body">
                             <div class="recipe-card-author">
-                                <span class="recipe-author-icon">{{ mb_substr($recipe->user->name, 0, 1) }}</span>
+                                <span class="recipe-author-icon user-color-{{ $recipe->user->id % 7 }}">{{ mb_substr($recipe->user->name, 0, 1) }}</span>
                                 {{ $recipe->user->name }}
                             </div>
                             <h3 class="recipe-card-title">{{ $recipe->title }}</h3>

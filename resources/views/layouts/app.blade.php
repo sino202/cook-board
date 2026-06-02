@@ -46,7 +46,7 @@
                 <a href="/threads" class="nav-link">掲示板</a>
                 {{-- ログインしているときだけ「投稿する」を表示 --}}
                 @auth
-                    <a href="/recipes/create" class="nav-link nav-post">
+                    <a href="/recipes/create" class="nav-link">
                         投稿する
                     </a>
                     {{-- ログアウトボタン --}}
@@ -61,7 +61,7 @@
                     <a href="/register" class="nav-link">
                         登録
                     </a>
-                    <a href="/login" class="nav-link nav-post">
+                    <a href="/login" class="nav-link">
                         ログイン
                     </a>
                 @endauth

@@ -26,6 +26,13 @@ class ThreadController extends Controller
     // フォームの内容を受け取ってDBに保存する
     public function store(Request $request)
     {
+        //バリデーション空データダメ。タイトル100文字、内容1000文字
+        $request->validate([
+        'title' => 'required|max:100',
+        'body'  => 'required|max:1000',
+        ]);
+
+
         Thread::create([
             'title'   => $request->title,
             'body'    => $request->body,

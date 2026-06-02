@@ -31,6 +31,14 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+        'title'       => 'required|max:100',
+        'description' => 'required|max:500',
+        'ingredients' => 'required',
+        'steps'       => 'required',
+        'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        
         //画像の保存処理
         //$imageNameの最初はnull(画像なし)
         $imageName = null;

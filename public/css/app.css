@@ -368,6 +368,7 @@ img {
     border: 2px solid transparent; /* 枠線（透明）削除ボタンと形を揃えるため */
     text-decoration: none;    /* リンクの下線を消す */
     margin-top: 20px;
+
 }
 
 /* オレンジのボタン（編集する） */
@@ -867,6 +868,9 @@ img {
     line-height: 1.8;        /* 行間を広めにして読みやすく */
 }
 
+.section-title {
+    margin-bottom: 20px;
+}
 
 
 
@@ -1021,6 +1025,41 @@ img {
     height: 2px;
     background: #333;
     border-radius: 2px;
+}
+
+/* アイコンの色を設定 */
+.card-border-0 { background: #E8845A; }
+.card-border-1 { background: #52C490; }
+.card-border-2 { background: #5BAEE0; }
+.card-border-3 { background: #A97DC9; }
+.card-border-4 { background: #E06B63; }
+.card-border-5 { background: #E8A830; }
+.card-border-6 { background: #3DBFAA; }
+
+/* ボーダーカラーの設定 */
+.reply-border-0 { border-left-color: #E8845A; }
+.reply-border-1 { border-left-color: #52C490; }
+.reply-border-2 { border-left-color: #5BAEE0; }
+.reply-border-3 { border-left-color: #A97DC9; }
+.reply-border-4 { border-left-color: #E06B63; }
+.reply-border-5 { border-left-color: #E8A830; }
+.reply-border-6 { border-left-color: #3DBFAA; }
+
+
+/* ボーダーカラーの設定（トップページ専用）*/
+.user-color-0 { background: #E8845A; border-color: #E8845A; }
+.user-color-1 { background: #52C490; border-color: #52C490; }
+.user-color-2 { background: #5BAEE0; border-color: #5BAEE0; }
+.user-color-3 { background: #A97DC9; border-color: #A97DC9; }
+.user-color-4 { background: #E06B63; border-color: #E06B63; }
+.user-color-5 { background: #E8A830; border-color: #E8A830; }
+.user-color-6 { background: #3DBFAA; border-color: #3DBFAA; }
+
+.recipe-card-img-thumb {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
 }
 
 /* ==========================================

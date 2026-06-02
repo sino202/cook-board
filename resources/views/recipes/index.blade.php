@@ -35,7 +35,7 @@
                     {{-- 投稿者アイコンと名前 --}}
                     <div class="recipe-card-author">
                         {{-- 名前の最初の1文字をアイコンとして表示 --}}
-                        <div class="recipe-author-icon">
+                        <div class="recipe-author-icon user-color-{{ ($recipe->user->id ?? 0) % 7 }}">
                             {{ mb_substr($recipe->user->name ?? '?', 0, 1) }}
                         </div>
                         <span>{{ $recipe->user->name ?? '不明' }}</span>
