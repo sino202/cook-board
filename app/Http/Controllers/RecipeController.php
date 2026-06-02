@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Auth;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class RecipeController extends Controller
 {
@@ -38,17 +39,19 @@ class RecipeController extends Controller
         'steps'       => 'required',
         'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         //画像の保存処理
         //$imageNameの最初はnull(画像なし)
         $imageName = null;
 
         //画像が送られてきたら保存する
         if($request->hasFile('image')){
-            // ファイルを public/imafes/recipes/ に保存する
-            // store()は自動でファイル名をつけてくれる
-            $imageName = $request->file('image')->store('images/recipes', 'public');    
-        }
+            // Cloudinaryに画像をアップロードする
+            $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath());
+            // アップロードした画像のURLを取得する
+            $imageName = $uploadedFile->getSecurePath();
+}
+
         Recipe::create([
             'title' => $request ->title,
             'description' => $request ->description,
@@ -86,18 +89,27 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //自分の投稿じゃなければ一覧に追い返す
-        if($recipe->user_id !== Auth::id()){
-            return redirect('/recipes');
-        }
-        $recipe->update([
-            'title'       => $request->title,
-            'description' => $request->description,
-            'ingredients' => $request->ingredients,
-            'steps'       => $request->steps,
-        ]);
+    //自分の投稿じゃなければ一覧に追い返す
+    if($recipe->user_id !== Auth::id()){
+        return redirect('/recipes');
+    }
 
-        return redirect('/recipes/' . $recipe->id);
+    // 画像が送られてきたら更新する
+    $imageName = $recipe->image;
+    if($request->hasFile('image')){
+        $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath());
+        $imageName = $uploadedFile->getSecurePath();
+    }
+
+    $recipe->update([
+        'title'       => $request->title,
+        'description' => $request->description,
+        'ingredients' => $request->ingredients,
+        'steps'       => $request->steps,
+        'image'       => $imageName,
+    ]);
+
+    return redirect('/recipes/' . $recipe->id);
     }
 
     /**
