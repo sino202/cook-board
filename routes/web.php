@@ -16,6 +16,8 @@ Route::middleware('auth')->group(function () {
     // URLが /threads/{thread}/replies で POSTなら storeReplyへ！
     //name('replies.store') の役割。route('replies.store', $thread) と書くだけで/threads/3/replies というURLを自動で作ってくれる便利機能！
     Route::post('/threads/{thread}/replies',[ThreadController::class,'storeReply'])->name('replies.store'); 
+    Route::delete('/replies/{reply}', [ThreadController::class, 'destroyReply'])->name('replies.destroy');
+
 });
 
 // // 誰でも見れる部分（一覧・詳細）

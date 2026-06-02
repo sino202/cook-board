@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Thread;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +54,16 @@ class ThreadController extends Controller
         //保存が終わったらそのスレッドの詳細ページに戻る。例えばスレッド3番なら /threads/3 に戻る
         return redirect()->route('threads.show', $thread);
     }
+    public function destroyReply(Reply $reply)
+    {
+        if($reply->user_id != Auth::id()){
+            abort(403);
+        }
+        $reply->delete();
+        return redirect()->back();
+     }
+
+
     public function edit(string $id)
     {
         //

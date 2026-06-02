@@ -367,12 +367,19 @@ img {
     transition: var(--transition); /* なめらかなアニメーション */
     border: 2px solid transparent; /* 枠線（透明）削除ボタンと形を揃えるため */
     text-decoration: none;    /* リンクの下線を消す */
+    margin-top: 20px;
 }
 
 /* オレンジのボタン（編集する） */
 .btn-primary {
     background: var(--primary); /* オレンジ背景 */
     color: white;               /* 白文字 */
+    border: none;
+    border-radius: 20px;
+    padding: 8px 24px;
+    margin-top: 20px;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -685,16 +692,26 @@ img {
     animation: float 3s ease-in-out infinite;
 }
 
-/* 偶数番目は少し遅らせてバラバラに動かす */
-.hero-emoji:nth-child(2n) { animation-delay: 0.5s; }
-.hero-emoji:nth-child(3n) { animation-delay: 1s; }
-
-/* ふわふわアニメーションの定義 */
-@keyframes float {
-    0%, 100% { transform: translateY(0); }      /* 元の位置 */
-    50%       { transform: translateY(-10px); }  /* 上に10px浮く */
+/* 掲示板の返信フォーム用 */
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 20px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ja);
+    font-size: 0.95rem;
+    color: var(--dark);
+    background: var(--bg);
+    transition: var(--transition);
+    resize: vertical;
 }
 
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+}
 
 
 /* ==========================================

@@ -36,6 +36,15 @@
                         <span class="reply-date">{{ $reply->created_at->format('Y/m/d H:i') }}</span>
                     </div>
                     <p class="reply-content">{{ $reply->content }}</p>
+
+                    {{-- 返信削除ボタン（この返信を書いたユーザーと、スレッドの投稿者だけ見える） --}}
+                    @if (Auth::id() === $reply->user_id)
+                        <form action="{{ route('replies.destroy' , $reply) }}" method="POST">
+                        @csrf                            
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline btn-lg">削除</button>
+                        </form>
+                    @endif
                 </div>
 
             @empty
