@@ -46,11 +46,14 @@ class RecipeController extends Controller
 
         //画像が送られてきたら保存する
         if($request->hasFile('image')){
-            // Cloudinaryに画像をアップロードする
+        try {
             $uploadedFile = Cloudinary::upload($request->file('image')->getRealPath());
-            // アップロードした画像のURLを取得する
             $imageName = $uploadedFile->getSecurePath();
-}
+        } catch (\Exception $e) {
+            \Log::error('Cloudinary error: ' . $e->getMessage());
+            return back()->withErrors(['image' => $e->getMessage()]);
+        }
+    }
 
         Recipe::create([
             'title' => $request ->title,
