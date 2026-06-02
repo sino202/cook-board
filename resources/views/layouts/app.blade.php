@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ページのタイトル（ブラウザのタブに表示される） -->
-    <title>CookBoard</title>
+    <title>Meshi Navi</title>
 
     <!-- Googleフォントの読み込み（2種類のフォントを使う） -->
     <!-- Noto Sans JP → 日本語テキスト用のきれいなフォント -->
@@ -25,8 +25,8 @@
 
             <!-- ロゴ部分（クリックするとトップへ戻る） -->
             <a href="/" class="logo">
-                <span class="logo-icon">🍳</span>
-                <span class="logo-text">CookBoard</span>
+            <img src="{{ asset('images/recipes/logo.png') }}" alt="Meshi Navi" style="height: 120px; width: 120px; object-fit: contain; display: block; flex-shrink: 0; max-width: none;">
+            <span class="logo-text">Meshi Navi</span>
             </a>
 
             <!-- ハンバーガーボタン（スマホのときだけ表示） -->
@@ -39,40 +39,33 @@
             <!-- ナビゲーションメニュー -->
             <nav class="nav-menu">
                 <!-- ホームリンク -->
-                <a href="/" class="nav-link">
-                    <span class="nav-icon">🏠</span>ホーム
-                </a>
+                <a href="/" class="nav-link">ホーム</a>
                 <!-- レシピ一覧リンク -->
-                <a href="/recipes" class="nav-link">
-                    <span class="nav-icon">🍽️</span>レシピ
-                </a>
+                <a href="/recipes" class="nav-link">レシピ</a>
                 <!-- 掲示板リンク -->
-                <a href="/threads" class="nav-link">
-                    <span class="nav-icon">💬</span>掲示板
-                </a>
+                <a href="/threads" class="nav-link">掲示板</a>
                 {{-- ログインしているときだけ「投稿する」を表示 --}}
                 @auth
                     <a href="/recipes/create" class="nav-link nav-post">
-                        <span class="nav-icon">✏️</span>投稿する
+                        投稿する
                     </a>
                     {{-- ログアウトボタン --}}
                     <form method="POST" action="/logout" style="display:inline;">
                         @csrf
                         <button type="submit" class="nav-link" style="background:none;border:none;cursor:pointer;">
-                            <span class="nav-icon">🚪</span>ログアウト
+                            ログアウト
                         </button>
                     </form>
                 @else
                     {{-- ログインしていないときは登録・ログインを表示 --}}
                     <a href="/register" class="nav-link">
-                        <span class="nav-icon">📝</span>登録
+                        登録
                     </a>
                     <a href="/login" class="nav-link nav-post">
-                        <span class="nav-icon">🔑</span>ログイン
+                        ログイン
                     </a>
                 @endauth
-                            </nav>
-
+            </nav>
         </div>
     </header>
 
@@ -82,7 +75,7 @@
     <!-- ======== フッター（全ページ共通） ======== -->
     <footer class="site-footer">
         <div class="container">
-            <p>© 2024 CookBoard. みんなの料理コミュニティ 🍳</p>
+            <p>© 2026 Meshi Navi. みんなの料理コミュニティ</p>
         </div>
     </footer>
 

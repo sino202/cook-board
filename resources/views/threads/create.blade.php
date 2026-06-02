@@ -53,7 +53,7 @@
 
             {{-- 送信ボタン --}}
             <button type="submit" class="btn btn-primary btn-full btn-lg">
-                💬 投稿する
+                投稿する
             </button>
 
         </form>

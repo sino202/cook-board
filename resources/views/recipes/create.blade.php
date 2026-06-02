@@ -61,7 +61,7 @@
                 {{-- 送信ボタン --}}
                 <div class="form-submit">
                     <button type="submit" class="btn btn-primary">
-                        ✏️ 投稿する
+                        投稿する
                     </button>
                     <a href="/recipes" class="btn btn-cancel">キャンセル</a>
                 </div>

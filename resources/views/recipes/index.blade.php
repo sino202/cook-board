@@ -5,7 +5,7 @@
     {{-- ページ上部のバナー --}}
     <div class="page-banner">
         <div class="container">
-            <h1 class="page-banner-title">🍽️ レシピ一覧</h1>
+            <h1 class="page-banner-title">レシピ一覧</h1>
             <p class="page-banner-desc">みんなの料理レシピを探してみよう</p>
         </div>
     </div>

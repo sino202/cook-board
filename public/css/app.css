@@ -86,13 +86,14 @@ img {
     -webkit-backdrop-filter: blur(16px);     /* Safari でも動くようにする */
     border-bottom: 1px solid var(--border);  /* 下に薄いベージュの線 */
     box-shadow: 0 2px 20px rgba(255, 107, 53, 0.06); /* うっすらオレンジの影 */
+    padding: 12px 0;
 }
 
 /* ロゴ・ナビ・ボタンを横に並べる箱 */
 .header-inner {
     display: flex;           /* 横並びにする */
     align-items: center;     /* 縦方向で中央揃え */
-    height: 72px;            /* ヘッダーの高さ */
+    height: 100px;            /* ヘッダーの高さ */
     gap: 32px;               /* 子要素どうしの間隔 */
 }
 
@@ -105,8 +106,9 @@ img {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;          /* アイコンとテキストの間隔 */
-    white-space: nowrap; /* 折り返さない */
+    gap: 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /* ロゴのアイコン（🍳） */
@@ -1081,11 +1083,6 @@ img {
     /* ナビを小さくして折り返さないようにする */
     .nav-menu {
         gap: 2px;
-    }
-
-    /* アイコンを隠して文字だけ表示 */
-    .nav-icon {
-        display: none;
     }
 
     /* ナビの文字を小さくする */
