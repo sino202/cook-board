@@ -1,59 +1,55 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Meshi Navi（メシナビ）
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+レシピ共有Webアプリケーション｜就活ポートフォリオ
 
-## About Laravel
+## サービス概要
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Meshi Naviは、ユーザーがレシピを投稿・閲覧・管理できるレシピ共有サービスです。
+料理好きが集まり、オリジナルレシピをシェアできるプラットフォームを目指しました。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🌐 **本番URL**: https://yamada-portfolio.com
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 技術スタック
 
-## Learning Laravel
+| 項目 | 技術 |
+|------|------|
+| バックエンド | PHP 8.3 / Laravel 12 |
+| フロントエンド | Blade / CSS |
+| データベース | SQLite（ローカル）/ MariaDB（本番） |
+| 認証 | Laravel Breeze |
+| 画像保存 | ローカルストレージ |
+| インフラ | XServer |
+| バージョン管理 | GitHub |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 主な機能
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- ユーザー登録・ログイン・ログアウト
+- レシピ投稿・編集・削除（CRUD）
+- 画像アップロード
+- レシピ一覧・詳細表示
+- 投稿者のみ編集・削除可能（認可）
 
-## Laravel Sponsors
+## セキュリティ対策
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- CSRF対策
+- XSS対策（Bladeエスケープ）
+- SQLインジェクション対策（Eloquent ORM）
+- パスワードのハッシュ化（bcrypt）
+- 認証・認可（Laravel Breeze）
+- バリデーション
+- ファイル形式チェック
+- HTTPS通信
 
-### Premium Partners
+## 苦労したこと・学び
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- LaravelのMVCパターンを理解しながら実装
+- XServerへのデプロイ設定（PHPバージョン、DB接続）
+- 画像アップロード機能の実装
+- セッション管理の設定
 
-## Contributing
+## 今後追加したい機能
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- レシピへのコメント機能
+- いいね機能
+- カテゴリ・タグ検索
+- レシピのお気に入り保存
